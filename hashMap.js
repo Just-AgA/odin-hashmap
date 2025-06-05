@@ -12,4 +12,19 @@ function HashMap(loadFactor = 0.75, capacity = 16) {
 
     return hashCode;
   };
+
+  const rehash = () => {
+    capacity *= 2;
+    const oldArray = resultArray;
+    resultArray = new Array(capacity);
+    count = 0;
+
+    for (const bucket of oldArray) {
+      if (bucket) {
+        for (const [key, value] of bucket) {
+          set(key, value); // Reinserts into resized array
+        }
+      }
+    }
+  };
 }
