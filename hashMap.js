@@ -58,6 +58,26 @@ function HashMap(loadFactor = 0.75, capacity = 16) {
     resultArray[index].push([key, value]);
     count++;
   };
+
+  const get = (key) => {
+    const index = hash(key);
+
+    if (index < 0 || index >= resultArray.length) {
+      throw new Error('Trying to access index out of bounds');
+    }
+
+    const items = resultArray[index];
+
+    if (items) {
+      for (let i = 0; i < items.length; i++) {
+        if (items[i][0] === key) {
+          return items[i][1];
+        }
+      }
+    }
+
+    return null;
+  };
 }
 
 export { HashMap };
