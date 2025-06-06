@@ -27,4 +27,37 @@ function HashMap(loadFactor = 0.75, capacity = 16) {
       }
     }
   };
+
+  const set = (key, value) => {
+    // Check if the number of entries has reached the capacity
+    if (count >= loadFactor * capacity) {
+      rehash();
+    }
+
+    const index = hash(key);
+
+    // Check if the index is bigger than the length of the array
+    if (index < 0 || index >= resultArray.length) {
+      throw new Error('Trying to access index out of bounds');
+    }
+
+    resultArray[index] = resultArray[index] || [];
+
+    // Check if the key already exists
+    for (let i = 0; i < resultArray[index].length; i++) {
+      const [storedKey, _] = resultArray[index][i];
+
+      if (storedKey === key) {
+        // Update existing key
+        resultArray[index][i][1] = value;
+        return;
+      }
+    }
+
+    // If key not found, add it
+    resultArray[index].push([key, value]);
+    count++;
+  };
 }
+
+export { HashMap };
