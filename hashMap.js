@@ -120,6 +120,18 @@ function HashMap(loadFactor = 0.75, capacity = 16) {
 
     return false;
   };
+
+  const length = () => {
+    // let size = 0;
+
+    // for (let i = 0; i < resultArray.length; i++) {
+    //   if (resultArray[i] !== undefined) {
+    //     size += resultArray[i].length;
+    //   }
+    // }
+    // return size;
+    return count;
+  };
 }
 
 export { HashMap };
