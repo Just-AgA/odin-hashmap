@@ -132,6 +132,14 @@ function HashMap(loadFactor = 0.75, capacity = 16) {
     // return size;
     return count;
   };
+
+  const clear = () => {
+    for (let i = 0; i < resultArray.length; i++) {
+      if (resultArray[i]) {
+        resultArray[i] = [];
+      }
+    }
+  };
 }
 
 export { HashMap };
