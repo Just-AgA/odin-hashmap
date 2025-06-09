@@ -154,6 +154,20 @@ function HashMap(loadFactor = 0.75, capacity = 16) {
 
     return keysArray;
   };
+
+  const values = () => {
+    const valuesArray = [];
+
+    for (const bucket of resultArray) {
+      if (bucket) {
+        for (const [_, value] of bucket) {
+          valuesArray.push(value);
+        }
+      }
+    }
+
+    return valuesArray;
+  };
 }
 
 export { HashMap };
