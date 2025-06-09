@@ -140,6 +140,20 @@ function HashMap(loadFactor = 0.75, capacity = 16) {
       }
     }
   };
+
+  const keys = () => {
+    const keysArray = [];
+
+    for (const bucket of resultArray) {
+      if (bucket) {
+        for (const [key, _] of bucket) {
+          keysArray.push(key);
+        }
+      }
+    }
+
+    return keysArray;
+  };
 }
 
 export { HashMap };
