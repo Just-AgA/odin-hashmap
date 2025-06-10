@@ -168,6 +168,20 @@ function HashMap(loadFactor = 0.75, capacity = 16) {
 
     return valuesArray;
   };
+
+  const entries = () => {
+    const entriesArray = [];
+
+    for (const bucket of resultArray) {
+      if (bucket) {
+        for (const [key, value] of bucket) {
+          entriesArray.push([key, value]);
+        }
+      }
+    }
+
+    return entriesArray;
+  };
 }
 
 export { HashMap };
